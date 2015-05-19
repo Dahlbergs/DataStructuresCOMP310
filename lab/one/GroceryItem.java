@@ -7,6 +7,8 @@ package lab.one;
 
 public class GroceryItem{
     /* Arbitrary scale from 0.0f to 1.0f */
+    
+    private String name;
     private double breakable;
     private double squishable;
     private double weight;
@@ -17,8 +19,9 @@ public class GroceryItem{
 	this.weight = 0.0;
     }
     
-    public GroceryItem(double breakable, double squishable, double weight){
+    public GroceryItem(String name, double breakable, double squishable, double weight){
 	/* constructor */
+	this.name = name;
 	this.breakable = breakable;
 	this.squishable = squishable;
 	this.weight = weight;
@@ -26,6 +29,12 @@ public class GroceryItem{
     }
     
     //Sets and Gets
+    
+    
+    public String getName() {
+	return name;
+    }
+
     public double getBreakable() {
 	return breakable;
     }
@@ -35,6 +44,9 @@ public class GroceryItem{
     }
     public double getWeight() {
 	return weight;
+    }
+    public void setName(name value) {
+        name = value;
     }
     public void setBreakable(double value) {
 	breakable = value;
