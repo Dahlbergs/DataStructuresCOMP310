@@ -2,7 +2,7 @@ package lab.one;
 import java.util.*;
 
 
-public class LabOneMain {
+public class Main {
 	public static void main(String args[]){
 		
 	/** User enters random integers which correspond to various 
