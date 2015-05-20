@@ -14,6 +14,7 @@ public class GroceryItem{
     private double weight;
     public GroceryItem() {
 	/* default constructor */
+	this.name = "default";
 	this.breakable = 0.0;
 	this.squishable = 0.0;
 	this.weight = 0.0;
@@ -45,7 +46,7 @@ public class GroceryItem{
     public double getWeight() {
 	return weight;
     }
-    public void setName(name value) {
+    public void setName(String value) {
         name = value;
     }
     public void setBreakable(double value) {
