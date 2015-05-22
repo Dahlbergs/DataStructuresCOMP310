@@ -23,7 +23,7 @@ public class Main {
     	
 	LinkedBag<GroceryItem> emptybag = new LinkedBag<GroceryItem>();
     	
-	Bagger temp = new Bagger(emptybag, shoppingBag);
+	Bagger temp = new Bagger(shoppingBag);
     	
     	
     	

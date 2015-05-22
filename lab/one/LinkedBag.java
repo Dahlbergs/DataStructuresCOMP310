@@ -3,6 +3,7 @@ package lab.one;
 public final class LinkedBag<T> implements IBag<T> {
     private Node firstNode;
     private int numberOfEntries;
+    private double bagWeight;
     
     public LinkedBag() {
 	firstNode = null;
@@ -14,32 +15,32 @@ public final class LinkedBag<T> implements IBag<T> {
 	private T data;
 	private Node next;
 
-	private Node(T dataPortion) {
-	    this(dataPortion, null);
-	    //end constructor for Node
-	}
-
-	private Node(T dataPortion, Node nextNode) {
-	    data = dataPortion;
-	    next = nextNode;
-	    //end constructor
-	}
-
-	private T getData() {
-	    return data;
-	}//get data
-
-	private void setData(T newData) {
-	    data = newData;
-	}//set data
-
-	private Node getNextNode() {
-	    return next;
-	}//get next node
-
-	private void setNextNode(Node nextNode) {
-	    next = nextNode;
-	}//set next node
+		private Node(T dataPortion) {
+		    this(dataPortion, null);
+		    //end constructor for Node
+		}
+	
+		private Node(T dataPortion, Node nextNode) {
+		    data = dataPortion;
+		    next = nextNode;
+		    //end constructor
+		}
+	
+		private T getData() {
+		    return data;
+		}//get data
+	
+		private void setData(T newData) {
+		    data = newData;
+		}//set data
+	
+		private Node getNextNode() {
+		    return next;
+		}//get next node
+	
+		private void setNextNode(Node nextNode) {
+		    next = nextNode;
+		}//set next node
 
     }//end of Node
 
@@ -155,6 +156,18 @@ public final class LinkedBag<T> implements IBag<T> {
 	    empty = true;
 	}
 	return empty;
+    }
+    public boolean isHeavy(){
+    	boolean heavy = false;
+    	if(bagWeight >= 3.0){
+    		heavy = true;
+    	}
+    }
+    public double getBagWeight(){
+    	return bagWeight;
+    }
+    public void setBagWeight(double value){
+    	bagWeight += value;
     }
 }
 
