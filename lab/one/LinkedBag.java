@@ -1,5 +1,7 @@
 package lab.one;
 
+
+
 public final class LinkedBag<T> implements IBag<T> {
     private Node firstNode;
     private int numberOfEntries;

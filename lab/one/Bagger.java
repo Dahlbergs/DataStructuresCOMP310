@@ -1,8 +1,13 @@
 package lab.one;
+
 import java.util.*;
-/** @author Sam Dahlberg, Robert Blood */
+
+/** Represents a grocery bagger who takes a cart of items and sorts into one or more bags
+    based on breakibility, squishability and weight.
+    @author Sam Dahlberg, Robert Blood */
+
 public class Bagger {
-    public Bagger(LinkedBag<GroceryItem> emptyBag, GroceryItem[] groceryList) {
+    public Bagger(GroceryItem[] groceryList) {
 		
 	int i = 0;
 	while(i < groceryList.length){
