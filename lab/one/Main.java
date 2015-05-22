@@ -21,8 +21,6 @@ public class Main {
     	
 	GroceryItem[] shoppingBag = {milk, bread, eggs, sugar, tomato, butter, chips, cheese};
     	
-	LinkedBag<GroceryItem> emptybag = new LinkedBag<GroceryItem>();
-    	
 	Bagger temp = new Bagger(shoppingBag);
     	
     	

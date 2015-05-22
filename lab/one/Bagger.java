@@ -12,11 +12,14 @@ public class Bagger {
 	int i = 0;
 	double bagWeight = 0.0;
 	while(i < groceryList.length){
-	    if(groceryList[i].getBreakable() > groceryList[i+1].getBreakable() && groceryList[i].getSquishable() > groceryList[i+1].getSquishable())
-		{
+	    if(groceryList[i].getBreakable() > groceryList[i+1].getBreakable() && 
+	       groceryList[i].getSquishable() > groceryList[i+1].getSquishable()) {
 		    //Element swap 
 		    //Element i is stored in temp
-		    GroceryItem temp = new GroceryItem(groceryList[i].getName(),[i].getBreakable(), groceryList[i].getSquishable(), groceryList[i].getWeight());
+		    GroceryItem temp = new GroceryItem(groceryList[i].getName(), 
+						       groceryList[i].getBreakable(),
+						       groceryList[i].getSquishable(),
+						       groceryList[i].getWeight());
 		    //Element i transformed into i+1
 		    groceryList[i].setName(groceryList[i+1].getName());
 		    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
