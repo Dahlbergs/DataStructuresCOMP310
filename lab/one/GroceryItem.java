@@ -12,26 +12,29 @@ public class GroceryItem{
     private double breakable;
     private double squishable;
     private double weight;
+    
+    /** Default constructor */
     public GroceryItem() {
-	/* default constructor */
 	this.name = "default";
 	this.breakable = 0.0;
 	this.squishable = 0.0;
 	this.weight = 0.0;
     }
     
+    /** Constructor which sets name, breakibility, squishability and weight 
+	@param name Item name
+	@param breakable Item breakibility
+	@param squishable Item squishibility
+	@param weight Item weight
+     */
     public GroceryItem(String name, double breakable, double squishable, double weight){
-	/* constructor */
-	this.name = name;
-	this.breakable = breakable;
-	this.squishable = squishable;
-	this.weight = weight;
-    
+	setName(name);
+	setBreakable(breakable);
+	setSquishable(squishable);
+	setWeight(weight);
     }
     
-    //Sets and Gets
-    
-    
+    /** Accessors for item parameters */
     public String getName() {
 	return name;
     }
@@ -46,6 +49,8 @@ public class GroceryItem{
     public double getWeight() {
 	return weight;
     }
+
+    /** Mutators for item parameters */
     public void setName(String value) {
         name = value;
     }
