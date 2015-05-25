@@ -14,6 +14,7 @@ public class Bagger {
 	this.groceryList = groceryList;
     }
 
+    /** Sorts the bag based on weight, breakibility and squishibility, in that order */
     void sort() {
     	for(int i = 0; i < groceryList.length - 1; i++) {
     		//temp object to hold element[i] for swapping
@@ -64,6 +65,8 @@ public class Bagger {
 	isSorted = true;
     }
 
+    /** Checks if the bag is sorted, and if so bag the items. Each bag is filled with hte sorted items
+	until the bag reaches its weight limit. The bag contents are printed and then a new bag is made */
     void bag() {
 	if(!isSorted) {
 	    System.out.println("Attempted to bag unsorted items, exiting");
