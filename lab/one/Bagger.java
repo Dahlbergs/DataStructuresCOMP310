@@ -8,20 +8,21 @@ import java.util.*;
 public class Bagger {
     double bagWeight = 0.0;
     GroceryItem[] groceryList;
-    
+    boolean isSorted = false;
+
     public Bagger(GroceryItem[] groceryList) {
 	this.groceryList = groceryList;
     }
 
     void sort() {
-    	for(int i = 0; i < groceryList.length; i++) {
+    	for(int i = 0; i < groceryList.length - 1; i++) {
     		//temp object to hold element[i] for swapping
-    		GroceryItem tempTwo = new GroceryItem(groceryList[i].getName(),
+    		GroceryItem temp = new GroceryItem(groceryList[i].getName(),
 				  groceryList[i].getBreakable(),
 				  groceryList[i].getSquishable(),
 				  groceryList[i].getWeight());
 	
-    		if(groceryList[i].getWeight() < groceryList[i+1].getWeight()){
+    		if(groceryList[i].getWeight() < groceryList[i+1].getWeight()) {
     			//Swap elements
 			    groceryList[i].setName(groceryList[i+1].getName());
 			    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
@@ -58,6 +59,34 @@ public class Bagger {
 			    groceryList[i+1].setSquishable(temp.getSquishable());
 			    groceryList[i+1].setWeight(temp.getWeight());
     		}
-    	}
+		
+	}
+	isSorted = true;
     }
+
+void bag() {
+    if(!isSorted) {
+		System.out.println("Attempted to bag unsorted items, exiting");
+		return;
+	    }
+    
+    System.out.println("Making bag and bagging items");
+    LinkedBag<GroceryItem> temp = new LinkedBag<GroceryItem>();
+    for(int i = 0; i < groceryList.length; i++) {
+	temp.setBagWeight(groceryList[i].getWeight());
+	if(!temp.isHeavy()) {
+	    temp.add(groceryList[i]);
+	} else {
+	    System.out.println("Printing bag contents");
+	    for(int j = 0; j < temp.getCurrentSize(); j++) {
+		System.out.println("To string");
+		GroceryItem[] niggers = temp.toArray();
+		niggers[i].toString();
+	    }
+	
+	}
+    
+    }
+}
+
 }

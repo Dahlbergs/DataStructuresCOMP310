@@ -22,26 +22,12 @@ public class Main {
 	GroceryItem[] shoppingBag = {milk, bread, eggs, sugar, tomato, butter, chips, cheese};
     	
 	Bagger temp = new Bagger(shoppingBag);
+	temp.sort();
+	temp.bag();
+        
     	
-    	
-    	
-	/*System.out.println("Milk B/S " + milk.getBreakable() + " " + milk.getSquishable());
-	  System.out.println("Bread B/S " + bread.getBreakable() +" " + bread.getSquishable());
-	  System.out.println("Eggs B/S  " + eggs.getBreakable() + " " + eggs.getSquishable());
-	  System.out.println("Sugar B/S " + sugar.getBreakable() + " " + sugar.getSquishable());
-    
-	  /*		int n;
-	  String groceryTest = "Potatoe, Chips, Soda";
-	  Scanner sc = new Scanner(System.in);
-		
-	  System.out.println("This is Lab One");
-	  System.out.println("Enter an integer: ");
-	  n = sc.nextInt();
-	  System.out.println("You entered: " + n);
-	  System.out.println("This is: " + groceryTest);*/
-		
-		
-	//sc.close();
+	
+	
     	
     }
 }

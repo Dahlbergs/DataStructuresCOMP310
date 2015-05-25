@@ -65,4 +65,12 @@ public class GroceryItem{
     public void setWeight(double value) {
 	weight = value;
     }
+
+    public String toString() {
+	System.out.println("Name: " + getName() + " " +
+			           "Break: " + getBreakable() + " " + 
+			           "Squish: " + getSquishable() + " " +
+			           "Weight: " + getWeight());
+	return "";
+    }
 }
