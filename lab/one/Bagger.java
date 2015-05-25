@@ -70,7 +70,7 @@ public class Bagger {
 	    return;
 	}
 
-	System.out.println("Making bag and bagging items");
+	System.out.println("Making bags and bagging items");
 
 	GroceryBag<GroceryItem> temp = new GroceryBag<GroceryItem>();
 	

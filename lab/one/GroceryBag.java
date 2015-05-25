@@ -20,8 +20,12 @@ public final class GroceryBag<T> extends LinkedBag<T> {
 		numberOfEntries--;
 		result = true;
 	    }
-
+	/** A profound but OOP defying piece of code. Do not use if you don't understand
+	    exactly what is happening.  This adds handling if the generic type is assumed to be
+	    a GroceryItem which has particular member accesors 
+	    NOTE: Only works for a GroceryBag that contains GroceryItems */
 	if(anEntry instanceof GroceryItem) {
+	    /* Cast anEntry to a GroceryItem. Doesnt work otherwise */
 	    GroceryItem temp = (GroceryItem) anEntry;
 	    this.setBagWeight(this.getBagWeight() - temp.getWeight());
 	}

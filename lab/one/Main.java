@@ -41,6 +41,9 @@ public class Main {
 				     pickled_pigs_feet, bacon, crackers, onions};
     	
 	Bagger temp = new Bagger(shoppingBag);
+	
+	/** Sorts the array using element swap and then bags the items accordingly while
+	    maintaing a weight threshold */
 	temp.sort();
 	temp.bag();
         
