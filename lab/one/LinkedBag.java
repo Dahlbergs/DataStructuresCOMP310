@@ -148,8 +148,10 @@ public final class LinkedBag<T> implements IBag<T> {
     public void clear() {
 	while(!isEmpty()) //need check if empty method
 	    {
-		remove();//need blanket bag wipe
+		T temp = remove();//need blanket bag wipe
 	    }
+	
+	this.bagWeight = 0.0;
     }//end of clear
 
     public boolean isEmpty() {
