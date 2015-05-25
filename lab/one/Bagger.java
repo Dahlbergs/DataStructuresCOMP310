@@ -7,11 +7,15 @@ import java.util.*;
     @author Sam Dahlberg, Robert Blood */
 
 public class Bagger {
+    double bagWeight = 0.0;
+    GroceryItem[] groceryList;
+    
     public Bagger(GroceryItem[] groceryList) {
-		
-	int i = 0;
-	double bagWeight = 0.0;
-	while(i < groceryList.length){
+	this.groceryList = groceryList;
+    }
+
+    void sort() {
+	for(int i = 0; i < groceryList.length; i++) {
 	    if(groceryList[i].getBreakable() > groceryList[i+1].getBreakable() && 
 	       groceryList[i].getSquishable() > groceryList[i+1].getSquishable()) {
 		    //Element swap 
@@ -39,7 +43,10 @@ public class Bagger {
 	    	if(groceryList[i].getSquishable() > groceryList[i+1].getSquishable()){
 			    //Element swap 
 			    //Element i is stored in temp
-			    GroceryItem tempTwo = new GroceryItem(groceryList[i].getName(), groceryList[i].getBreakable(), groceryList[i].getSquishable(), groceryList[i].getWeight());
+			    GroceryItem tempTwo = new GroceryItem(groceryList[i].getName(),
+								  groceryList[i].getBreakable(),
+								  groceryList[i].getSquishable(),
+								  groceryList[i].getWeight());
 			    //Element i transformed into i+1
 			    groceryList[i].setName(groceryList[i+1].getName());
 			    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
@@ -52,7 +59,8 @@ public class Bagger {
 			    groceryList[i+1].setWeight(tempTwo.getWeight());
 	    	}
 	    }
-	    i++;
+	    
 	}
-  }
+    }
+    
 }
