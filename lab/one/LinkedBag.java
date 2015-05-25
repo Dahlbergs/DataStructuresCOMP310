@@ -162,9 +162,11 @@ public final class LinkedBag<T> implements IBag<T> {
     public boolean isHeavy(){
     	boolean heavy = false;
     	if(bagWeight >= 3.0){
-    		heavy = true;
-    	}
+	    heavy = true;
+    	} 
+	return heavy;
     }
+
     public double getBagWeight(){
     	return bagWeight;
     }

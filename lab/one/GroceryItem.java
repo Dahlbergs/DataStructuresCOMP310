@@ -6,9 +6,11 @@ package lab.one;
 */
 
 public class GroceryItem{
-    /* Arbitrary scale from 0.0f to 1.0f */
+    
     
     private String name;
+    
+    /* Arbitrary scale from 0.0f to 1.0f */
     private double breakable;
     private double squishable;
     private double weight;
