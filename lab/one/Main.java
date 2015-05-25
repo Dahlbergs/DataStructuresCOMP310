@@ -29,7 +29,16 @@ public class Main {
 	GroceryItem chips = new GroceryItem("Chips", 1.0, 0.0, 1.1);
 	GroceryItem cheese = new GroceryItem("Cheese", 0.0, 0.0, 1.5);
 
-	GroceryItem[] shoppingBag = {milk, bread, eggs, sugar, tomato, butter, chips, cheese};
+	GroceryItem pickled_pigs_feet = new GroceryItem("Pickled Pigs Feet", 0.2, 0.1, 0.5);
+	GroceryItem bacon = new GroceryItem("Bacon", 0.0, 0.0, 0.3);
+	GroceryItem crackers = new GroceryItem("Crackers", 0.9, 0.9, 0.2);
+	GroceryItem onions = new GroceryItem("Onions", 0.1, 0.5, 0.5);
+	
+	
+
+	GroceryItem[] shoppingBag = {milk, bread, eggs, sugar,
+				     tomato, butter, chips, cheese,
+				     pickled_pigs_feet, bacon, crackers, onions};
     	
 	Bagger temp = new Bagger(shoppingBag);
 	temp.sort();

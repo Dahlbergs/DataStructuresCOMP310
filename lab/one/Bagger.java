@@ -72,32 +72,36 @@ public class Bagger {
 
 	System.out.println("Making bag and bagging items");
 
-	LinkedBag<GroceryItem> temp = new LinkedBag<GroceryItem>();
+	GroceryBag<GroceryItem> temp = new GroceryBag<GroceryItem>();
 	
 	int bagNumber = 0;
 
 	for(int i = 0; i < groceryList.length; i++) {
 	    //System.out.println("i = " + i );
+	    
 	    if(!temp.isHeavy()) {		
-		System.out.println("Adding item: " + i);
-		temp.setBagWeight(groceryList[i].getWeight());
+		//System.out.println("Adding item: " + i);
+		temp.addWeightToBag(groceryList[i].getWeight());
 		temp.add(groceryList[i]);
 
 		if(!temp.isHeavy() && i < groceryList.length - 1){
 		    continue; 
 		} 
 		
-		System.out.println("Printing bag contents");
+		//System.out.println("Printing bag contents");
 		
+		bagNumber++;
+		System.out.println("Bag: " + bagNumber);
+
 		for(int j = 0; j <= temp.getCurrentSize() - 1; j++) {
-		    System.out.println("To string");
+		    //System.out.println("To string");
 		    Object[] groceries = temp.toArray();
 		    groceries[j].toString();		
 		}
-		bagNumber++;
-		System.out.println("Bag: " + bagNumber + "\nClearing");
+		
+		//System.out.println("Clearing");
 		temp.clear();
-		System.out.println(temp.getBagWeight());
+		//System.out.println(temp.getBagWeight());
 		
 	    }
 	
