@@ -1,5 +1,4 @@
 package lab.one;
-
 import java.util.*;
 
 /** Represents a grocery bagger who takes a cart of items and sorts into one or more bags
@@ -16,7 +15,7 @@ public class Bagger {
 		{
 		    //Element swap 
 		    //Element i is stored in temp
-		    GroceryItem temp = new GroceryItem(groceryList[i].getName(),[i].getBreakable(), groceryList[i].getSquishable(), groceryList[i].getWeight());
+		    GroceryItem temp = new GroceryItem(groceryList[i].getName(), groceryList[i].getBreakable(), groceryList[i].getSquishable(), groceryList[i].getWeight());
 		    //Element i transformed into i+1
 		    groceryList[i].setName(groceryList[i+1].getName());
 		    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
@@ -28,15 +27,12 @@ public class Bagger {
 		    groceryList[i+1].setSquishable(temp.getSquishable());
 		    groceryList[i+1].setWeight(temp.getWeight());
 					
-		    System.out.println("Break: " + groceryList[i].getBreakable() + " " + 
-				       "Squish: " + groceryList[i].getSquishable() + " " +
-				       "Weight: " + groceryList[i].getWeight());
 		}
 	    else{
 	    	if(groceryList[i].getSquishable() > groceryList[i+1].getSquishable()){
 			    //Element swap 
 			    //Element i is stored in temp
-			    GroceryItem tempTwo = new GroceryItem(groceryList[i].getName(),[i].getBreakable(), groceryList[i].getSquishable(), groceryList[i].getWeight());
+			    GroceryItem tempTwo = new GroceryItem(groceryList[i].getName(), groceryList[i].getBreakable(), groceryList[i].getSquishable(), groceryList[i].getWeight());
 			    //Element i transformed into i+1
 			    groceryList[i].setName(groceryList[i+1].getName());
 			    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
@@ -49,6 +45,9 @@ public class Bagger {
 			    groceryList[i+1].setWeight(tempTwo.getWeight());
 	    	}
 	    }
+	    System.out.println("Break: " + groceryList[i].getBreakable() + " " + 
+			       "Squish: " + groceryList[i].getSquishable() + " " +
+			       "Weight: " + groceryList[i].getWeight());
 	    i++;
 	}
   }
