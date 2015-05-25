@@ -91,8 +91,8 @@ public class Bagger {
 		
 		for(int j = 0; j <= temp.getCurrentSize() - 1; j++) {
 		    System.out.println("To string");
-		    Object[] niggas = temp.toArray();
-		    niggas[j].toString();		
+		    Object[] groceries = temp.toArray();
+		    groceries[j].toString();		
 		}
 		bagNumber++;
 		System.out.println("Bag: " + bagNumber + "\nClearing");
