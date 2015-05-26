@@ -16,51 +16,53 @@ public class Bagger {
 
     /** Sorts the bag based on weight, breakibility and squishibility, in that order */
     void sort() {
-    	for(int i = 0; i < groceryList.length - 1; i++) {
+	for(int count = 0; count < groceryList.length + 1; count++) {
+	    for(int i = 0; i < groceryList.length - 1; i++) {
     		//temp object to hold element[i] for swapping
     		GroceryItem temp = new GroceryItem(groceryList[i].getName(),
-				  groceryList[i].getBreakable(),
-				  groceryList[i].getSquishable(),
-				  groceryList[i].getWeight());
+						   groceryList[i].getBreakable(),
+						   groceryList[i].getSquishable(),
+						   groceryList[i].getWeight());
 	
     		if(groceryList[i].getWeight() < groceryList[i+1].getWeight()) {
-    			//Swap elements
-			    groceryList[i].setName(groceryList[i+1].getName());
-			    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
-			    groceryList[i].setSquishable(groceryList[i+1].getSquishable());
-			    groceryList[i].setWeight(groceryList[i+1].getWeight());
+		    //Swap elements
+		    groceryList[i].setName(groceryList[i+1].getName());
+		    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
+		    groceryList[i].setSquishable(groceryList[i+1].getSquishable());
+		    groceryList[i].setWeight(groceryList[i+1].getWeight());
 			    
-			    groceryList[i+1].setName(temp.getName());
-			    groceryList[i+1].setBreakable(temp.getBreakable());
-			    groceryList[i+1].setSquishable(temp.getSquishable());
-			    groceryList[i+1].setWeight(temp.getWeight());
+		    groceryList[i+1].setName(temp.getName());
+		    groceryList[i+1].setBreakable(temp.getBreakable());
+		    groceryList[i+1].setSquishable(temp.getSquishable());
+		    groceryList[i+1].setWeight(temp.getWeight());
 
     		}
     		else if(groceryList[i].getBreakable() > groceryList[i+1].getBreakable()){
-    			//Swap elements
-			    groceryList[i].setName(groceryList[i+1].getName());
-			    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
-			    groceryList[i].setSquishable(groceryList[i+1].getSquishable());
-			    groceryList[i].setWeight(groceryList[i+1].getWeight());
+		    //Swap elements
+		    groceryList[i].setName(groceryList[i+1].getName());
+		    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
+		    groceryList[i].setSquishable(groceryList[i+1].getSquishable());
+		    groceryList[i].setWeight(groceryList[i+1].getWeight());
 			    
-			    groceryList[i+1].setName(temp.getName());
-			    groceryList[i+1].setBreakable(temp.getBreakable());
-			    groceryList[i+1].setSquishable(temp.getSquishable());
-			    groceryList[i+1].setWeight(temp.getWeight());
+		    groceryList[i+1].setName(temp.getName());
+		    groceryList[i+1].setBreakable(temp.getBreakable());
+		    groceryList[i+1].setSquishable(temp.getSquishable());
+		    groceryList[i+1].setWeight(temp.getWeight());
     		}
     		else if(groceryList[i].getSquishable() > groceryList[i+1].getSquishable()){
-    			//Swap elements
-			    groceryList[i].setName(groceryList[i+1].getName());
-			    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
-			    groceryList[i].setSquishable(groceryList[i+1].getSquishable());
-			    groceryList[i].setWeight(groceryList[i+1].getWeight());
+		    //Swap elements
+		    groceryList[i].setName(groceryList[i+1].getName());
+		    groceryList[i].setBreakable(groceryList[i+1].getBreakable());
+		    groceryList[i].setSquishable(groceryList[i+1].getSquishable());
+		    groceryList[i].setWeight(groceryList[i+1].getWeight());
 			    
-			    groceryList[i+1].setName(temp.getName());
-			    groceryList[i+1].setBreakable(temp.getBreakable());
-			    groceryList[i+1].setSquishable(temp.getSquishable());
-			    groceryList[i+1].setWeight(temp.getWeight());
+		    groceryList[i+1].setName(temp.getName());
+		    groceryList[i+1].setBreakable(temp.getBreakable());
+		    groceryList[i+1].setSquishable(temp.getSquishable());
+		    groceryList[i+1].setWeight(temp.getWeight());
     		}
 		
+	    }
 	}
 	isSorted = true;
     }

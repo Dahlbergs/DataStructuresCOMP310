@@ -132,7 +132,7 @@ public class LinkedBag<T> implements IBag<T> {
     }//end of contains
 
     /** Gets a refernce to the node specified
-	@oaram anEntry The node to get the data for
+	@param anEntry The node to get the data for
 	@return The node reference for the specified entry */
     protected Node getReferenceTo(T anEntry){
 	boolean found = false;
@@ -151,7 +151,7 @@ public class LinkedBag<T> implements IBag<T> {
 	return currentNode;
     }//end get reference to
 
-    /** Arbitraroy removes a node from the chain, most efficient method is to remove the last
+    /** Arbitrarily removes a node from the chain, most efficient method is to remove the last
 	entry.
 	@return Returns the entry removed from the chain */
     public T remove() {
