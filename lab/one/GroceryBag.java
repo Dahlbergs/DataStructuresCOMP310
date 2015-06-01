@@ -9,7 +9,7 @@ public final class GroceryBag<T> extends LinkedBag<T> {
     /** Adds a specific handler if the Grocerybag entry is an instanceof a GroceryItem
 	to ensure the bagweight gets decremented if an item is removed 
 	@param anEntry A generic item to be put into the bag
-	@return True if the action was succesful, false if not. */
+	@return True if the action was successful, false if not. */
     public boolean remove(T anEntry){
 	boolean result = false;
 	Node nodeN = getReferenceTo(anEntry);
@@ -20,10 +20,7 @@ public final class GroceryBag<T> extends LinkedBag<T> {
 		numberOfEntries--;
 		result = true;
 	    }
-	/** A profound but OOP defying piece of code. Do not use if you don't understand
-	    exactly what is happening.  This adds handling if the generic type is assumed to be
-	    a GroceryItem which has particular member accesors 
-	    NOTE: Only works for a GroceryBag that contains GroceryItems */
+	
 	if(anEntry instanceof GroceryItem) {
 	    /* Cast anEntry to a GroceryItem. Doesnt work otherwise */
 	    GroceryItem temp = (GroceryItem) anEntry;
