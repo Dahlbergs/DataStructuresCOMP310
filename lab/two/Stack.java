@@ -1,77 +1,77 @@
 package lab.two;
 
-/** Implements the stack data structure 
-    @author Robert Blood, Sam Dahlberg */
-
 public class Stack<X> implements IStack<X> {
-    // The first element in the stack.
-    protected Node head;
-    protected int numberOfNodes;
-   
-    public Stack(){
-	head = null;
-	numberOfNodes = 0;
-    }
-    
-    //Encapsulates the data into a node of a linked list. 
-    protected class Node {
-	//Data to be stored in the stack.
-	protected X data;
-	// The next node in the list.
-	protected Node next;
+	protected Node head;
+	protected int numberOfNodes;
 	
-	//Default constructor
-	protected Node(X aValue){
-	    this(aValue, null);
+	public Stack(){
+		numberOfNodes = 0;
 	}
 	
-	//Creates a stack with two elements.
-	protected Node(X aValue, Node nextNode){
-	    setData(aValue);
-	    setNextNode(nextNode);
-	}
+	protected class Node {
+		
+		protected X data;
+		/** The next node in the list*/
+		protected Node next;
+		
+		protected Node(X aValue){
+			this(aValue, null);
+		}
+		
+		protected Node(X aValue, Node nextNode){
+			data = aValue;
+			next = nextNode;
+		}
 
-	protected X getData() {
-	    return data;
+		protected X getData() {
+		    return data;
+		}
+		
+		protected void setData(X aValue) {
+		    data = aValue;
+		}
+		
+		protected Node getNextNode() {
+		    return next;
+		}
+		
+		protected void setNextNode(Node nextNode) {
+		    next = nextNode;
+		}
+	
 	}
-	protected void setData(X aValue) {
-	   data = aValue;
-	}
-	protected Node getNextNode() {
-	    return next;
-	}
-	protected void setNextNode(Node nextNode) {
-	    next = nextNode;
-	}
-    }
-
-    @Override
+	@Override
 	public int getCurrentSize() {
-	return numberOfNodes;
-    }
-
-    @Override
+		return numberOfNodes;
+	}
+	@Override
 	public void push(X aValue) {
-	Node newNode = new Node(aValue, head);
-	numberOfNodes++;
-    }
-
-    @Override
+		Node newNode = new Node(aValue, head);
+		newNode.next = head;
+		head = newNode;
+		numberOfNodes++;
+	}
+	@Override
 	public X pop() {
-	Node temp = head; 
-	head.next = head;
-	return temp.getData();
-    }
-
-    @Override
+		Node temp = head; 
+		head.next = head;
+		numberOfNodes--;
+		return temp.getData();
+	}
+	@Override
 	public int getFrequencyOf(X aValue) {
-	// TODO Auto-generated method stub
-	return 0;
-    }
-
-    @Override
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
 	public boolean find(X aValue) {
-	// TODO Auto-generated method stub
-	return false;
-    }
+		// TODO Auto-generated method stub\
+		return false;
+	}
+	@Override
+	public void dump() {
+		// TODO Auto-generated method stub
+	}
+
 }
+
