@@ -60,14 +60,4 @@ public class Stack<T> implements IStack<T> {
 	numberOfNodes--;
 	return temp.getData();
     }
-    @Override
-	public int getFrequencyOf(T aValue) {
-		
-	return 0;
-    }
-    @Override
-	public boolean find(T aValue) {
-		
-	return false;
-    }
 }
