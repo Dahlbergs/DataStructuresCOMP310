@@ -19,12 +19,13 @@ public class Stack<X> implements IStack<X> {
 	public X[] toArray(){
 		Node currentNode = head;
 		int index = 0;
-		X[] goingTo = (X[]new Object[numberOfNodes];
+		X[] goingTo = X[]new Object[numberOfNodes];
 		for(index < numberOfNodes){
 			goingTo[index] = nextNode.data;
 			i++;
 			currentNode = currentNode.next;
 		}
+		return goingTo;
 	}
 
 	protected class Node {
