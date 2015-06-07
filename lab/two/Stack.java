@@ -83,6 +83,19 @@ public class Stack<T> implements IStack<T> {
 		return temp;		
 	}
 	
+	public int getFrequencyOf(T aValue){
+		int frequency = 0;
+		int loopCounter = 0;
+		Node temp = head;
+		while((loopCounter < numberOfNodes) && (temp != null)){
+		    if(aValue.equals(temp.getData()))
+			frequency++;
+		    loopCounter++;
+		    temp = temp.getNextNode();
+		}
+		return frequency;
+	}
+	
 	public boolean isEmpty() {	
 		return head == null;	
 	}

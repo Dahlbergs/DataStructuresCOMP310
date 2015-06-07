@@ -18,7 +18,7 @@ public interface IStack<T> {
 	/** get frequency of given value
 	 	@param aValue to find frequency of
 	 	@return number of occurrences */
-	
+	public int getFrequencyOf(T aValue);
 	
 	
 	/** retrieve last element of the stack
