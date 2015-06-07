@@ -1,5 +1,8 @@
 package lab.two;
 
+import two.IStack;
+import two.Stack.Node;
+
 public class Stack<T> implements IStack<T> {
     
     /**The first node in the stack */
@@ -7,7 +10,8 @@ public class Stack<T> implements IStack<T> {
     protected int numberOfNodes;
 	
     public Stack(){
-	numberOfNodes = 0;
+    	head = null;
+    	numberOfNodes = 0;
     }
 	
     protected class Node {
@@ -42,22 +46,48 @@ public class Stack<T> implements IStack<T> {
 	}
 	
     }
-    @Override
+    
+
 	public int getCurrentSize() {
-	return numberOfNodes;
+		return numberOfNodes;
     }
-    @Override
+    
+
 	public void push(T aValue) {
-	Node newNode = new Node(aValue, head);
-	newNode.next = head;
-	head = newNode;
-	numberOfNodes++;
+		Node newNode = new Node(aValue, head);
+		newNode.next = head;
+		head = newNode;
+		numberOfNodes++;
     }
-    @Override
-	public T pop() {
-	Node temp = head; 
+	
+
+	public T pop() {	
+		T temp = peek();		
+		if (head != null)
+			head = head.getNextNode();
+			numberOfNodes--;
+		
+		return temp;
+		
+	/**Node temp = head; 
 	head.next = head;
 	numberOfNodes--;
-	return temp.getData();
+	return temp.getData();*/
     }
+	
+	public T peek() {
+		T temp = null;	
+		if(head != null)
+			temp = head.getData();
+	
+		return temp;		
+	}
+	
+	public boolean isEmpty() {	
+		return head == null;	
+	}
+	
+	public void clear() {	
+		head = null;
+	}
 }
