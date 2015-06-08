@@ -1,10 +1,22 @@
 package lab.two;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
 public class Main {
+    
+    public static void main(String[] args) {
+	Calculator calc = new Calculator();
+	// 1 + 2 * 2 -3 = 2
+	calc.addElement('1');
+	calc.addElement('+');
+	calc.addElement('2');
 
-    public static void Main(String args[]) {
-
+	calc.processInput();
+	calc.processStacks();
+	
     }
-
-
 }
