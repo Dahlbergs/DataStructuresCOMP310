@@ -52,18 +52,23 @@ public class Calculator {
 		}
 	    }
 	}	    	
-	System.out.println(temp);
+	System.out.println(temp);	
+	processExpression(temp);
+	processExpression(temp);
+	System.out.println(temp);	
 	return temp;
     }
 
 
     public String processExpression(String str) {
+	System.out.println("Process Expression");	
 	//Assert that string is a valid expression
 
 	//While the substring is not smaller than a single expression, evaluate the expression
-	while(str.length() > 2) {	    
+	while(str.length() > 1) {
+	    System.out.println("In while loop");	
 	    String potato = null;
-
+	    
 	    char[] tempChar = new String(str.substring(2, str.length() - 1)).toCharArray();
 
 	    switch(str.charAt(1)) {
