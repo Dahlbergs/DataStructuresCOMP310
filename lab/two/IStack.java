@@ -1,11 +1,9 @@
 package lab.two;
 
-/** An interface that defines proper operatins for stack type data structures
- * @author Robert Blood, Sam Dahlberg, Yves Sabato
- */
+/** An interface that defines proper operations for stack type data structures
+ 	@author Robert Blood, Sam Dahlberg, Yves Sabato */
 
 public interface IStack<T> {
-	
     /** @return Number of elements in the stack
     public int getCurrentSize();
     
@@ -23,4 +21,3 @@ public interface IStack<T> {
 	@return True if empty, else false.*/
     public boolean isEmpty();
 }
-
