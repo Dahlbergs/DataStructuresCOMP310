@@ -1,7 +1,5 @@
 package lab.two;
 
-import youtube_calculator.Stack;
-
 public class Calculator {
 	
     private char[] operators = {'+', '-', '*', '/', '(', ')'};
@@ -24,7 +22,7 @@ public class Calculator {
     	for (int i = 0; i < len; i++){
     		 
     		inputStack.push(input[i]);
-    		System.out.println("input stack:" + inputStack.peek());
+    		System.out.println("input stack:" + inputStack.top());
     	}
     
     	parseInput();
@@ -32,15 +30,15 @@ public class Calculator {
 
     public void parseInput() {        
 
-    System.out.println("parsing input stack:" + inputStack.peek());
+    System.out.println("parsing input stack:" + inputStack.top());
 
 	while(!inputStack.isEmpty()) {
 		
-	    if(isOperand(inputStack.peek())) {
+	    if(isOperand(inputStack.top())) {
 	    	
 		operandStack.push(Character.getNumericValue(inputStack.pop()));
 	    } 
-	    else if(isOperator(inputStack.peek())) {
+	    else if(isOperator(inputStack.top())) {
 	    	
 		operatorStack.push(inputStack.pop());
 	    }
@@ -107,7 +105,7 @@ public class Calculator {
     public int processStacks() {
     	
 	while(operandStack.getCurrentSize() > 1) {
-		System.out.println("processing operand stack:" + operandStack.peek());
+		System.out.println("processing operand stack:" + operandStack.top());
 	    int temp = Character.getNumericValue(operandStack.pop());
 	    char temp2 = operatorStack.pop();
 	    int temp3 = Character.getNumericValue(operandStack.pop());
@@ -119,7 +117,7 @@ public class Calculator {
 	    	System.out.println("checking temp3:" + temp3);
 	    	
 		operandStack.push(temp+temp3);
-		System.out.println(operandStack.peek());
+		System.out.println(operandStack.top());
 		break;
 	    case '-':
 		operandStack.push(temp-temp3);
@@ -134,8 +132,8 @@ public class Calculator {
 		System.out.println("Invalid Operator");
 	    }   
 	}
-		System.out.println("Operand stack or solution is:" + operandStack.peek());
-		return operatorStack.peek();
+		System.out.println("Operand stack or solution is:" + operandStack.top());
+		return operatorStack.top();
     }
 
     public boolean isOperand(char character) {
