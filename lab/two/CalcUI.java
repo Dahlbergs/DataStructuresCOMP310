@@ -2,14 +2,18 @@ package lab.two;
 
 import java.awt.FlowLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JButton;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
-public class CalcUI {
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
+
+//Would be easier with arrays in general.
+public class calculator_ui implements ActionListener {
+	
 	JFrame frame = new JFrame("ICalculator");
 	JPanel panel = new JPanel(new FlowLayout());
 	
@@ -37,17 +41,14 @@ public class CalcUI {
 	
 	JButton button_C = new JButton("C");
 	JButton button_Q = new JButton("Q");
-	JButton button_less_than = new JButton("<");
-
-
-
+	JButton button_less_than = new JButton("<"); 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
 		
 		frame.setVisible(true);
-		frame.setSize(200,220);
+		frame.setSize(230,230);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -78,6 +79,99 @@ public class CalcUI {
 		panel.add(button_lbrac);
 		panel.add(button_rbrac);
 		panel.add(buttoneq);
-							
+	
+		button1.addActionListener(this);
+		button2.addActionListener(this);
+		button3.addActionListener(this);
+		button4.addActionListener(this);
+		button5.addActionListener(this);
+		button6.addActionListener(this);
+		button7.addActionListener(this);
+		button8.addActionListener(this);
+		button9.addActionListener(this);
+		button0.addActionListener(this);
+		
+		buttonadd.addActionListener(this);
+		buttonsub.addActionListener(this);
+		buttondiv.addActionListener(this);
+		buttonmulti.addActionListener(this);
+		
+		button_lbrac.addActionListener(this);
+		button_rbrac.addActionListener(this);
+		buttoneq.addActionListener(this);
+		button_C.addActionListener(this);
+		button_Q.addActionListener(this);
+		button_less_than.addActionListener(this);
+								
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		String elementString;
+		//int value_solution = 0;
+		Object element = e.getSource();
+		Calculator calc = new Calculator();
+		
+		if (element==button1){
+			
+			text.append("1");
+		}
+		if (element==button2){
+			
+			text.append("2");
+		}
+		if (element==button3){
+	
+			text.append("3");
+		}
+		if (element==button4){
+	
+			text.append("4");
+		}
+		if (element==button5){
+	
+			text.append("5");
+		}
+		if (element==button6){
+	
+			text.append("6");
+		}
+		if (element==button7){
+	
+			text.append("7");
+		}
+		if (element==button8){
+	
+			text.append("8");
+		}
+		if (element==button9){
+	
+			text.append("9");
+		}
+		if (element==button0){
+			
+			text.append("0");
+		}
+		if (element==buttonadd){
+			
+			text.append("+");
+		}
+		if (element==buttoneq){
+				
+			elementString = text.getText();
+			System.out.println("text is:" + elementString);
+			calc.addInput(elementString);
+			
+			print_solution(calc.processStacks());			
+			
+		}
+	}
+		
+		public void print_solution(int aValue){
+			
+			text.setText("");
+			text.setText(Integer.toString(aValue));
+				
 	}
 }
