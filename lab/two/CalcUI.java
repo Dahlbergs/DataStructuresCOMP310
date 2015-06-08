@@ -48,6 +48,7 @@ public class CalcUI {
 		
 		frame.setVisible(true);
 		frame.setSize(200,220);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.add(panel);
