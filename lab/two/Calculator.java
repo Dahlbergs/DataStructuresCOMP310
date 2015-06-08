@@ -1,70 +1,25 @@
 package lab.two;
 
 public class Calculator {
-<<<<<<< HEAD
     private char[] paren = {'(', ')'};
     private char[] operators = {'+', '-', '*', '/'};
     private char[] operands = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
     private Stack<Character> inputStack = new Stack<Character>();
-=======
-
-    private  enum Operand {
-	ADD ('+'),
-	SUBTRACT('-'),
-        MULTIPLY('*'),
-        DIVISION('*'),
-	OPEN_PAREN('('),
-        CLOSE_PAREN(')');
-
-	private final char operand;
-        Operand(char operand) {
-	    this.operand = operand;
-	}
-    }
-
-    private enum  Operator {
-	ONE(1),
-	TWO(2),
-	THREE(3),
-	FOUR(4),
-	FIVE(5),
-	SIX(6),
-	SEVEN(7),
-	EIGHT(8),
-	NINE(9);
-
-	private final int operator;
-        Operator(int operator) {
-	    this.operator = operator;
-	}
-    }
-
-    private Stack<Character> inputStack= new Stack<Character>();
-    private String input;
->>>>>>> parent of f9fb7e7... Bullshit
 
     private String inputString = "";
 
-<<<<<<< HEAD
     public Calculator() {}
 	
     public void addInput(char element) {
-	//System.out.println("Add element");
+	System.out.println("Add element");
 	inputStack.push(element);
     }
 
     public void stackToString() {
-	while(!inputStack.isEmpty()) {
+	while(inputStack.isEmpty()) {
 	    inputString = inputStack.pop() + inputString;
-	}
-
-	System.out.println(inputString);
-    }
-
-    public void processInput() {
-	stackToString();	
-	processParenthesis(inputString);
+	}	
     }
 
     public String processParenthesis(String str) {
@@ -72,41 +27,34 @@ public class Calculator {
 	String output = "";
 	
 	//Iterates through string looking for parenthesis
-	System.out.println("Looking for parenthesis");
 	for(int i = 0; i < str.length(); i++) {
-	    //if we find an open one, break it into smaller expression	    
+	    //if we find an open one, break it into smaller expression
 	    if(str.charAt(i) == '(' ) {
-		System.out.println("Found open paren");
 		//Iterate through new expression looking for closed parenthesis
 		for(int j = i+1; j < str.length(); j++) {
 		    //If we do not find a close one, add the element to a temp string and continue
 		    if(str.charAt(j) != ')') {
 			temp = temp + str.charAt(j);
 		    } else {  //If we do find one, check that the new substring doesnt have any more parenthesis	
-			//System.out.println(temp);
-			processParenthesis(str.substring(j, str.length()));
-			temp = processExpression(temp);
+			System.out.println(temp);
+			processParenthesis(str.substring(j, str.length()));			
 		    }
 		}
 	    }
-	}	    	
-	System.out.println(temp);	
-	processExpression(temp);
-	processExpression(temp);
-	System.out.println(temp);	
+	}	    
+	temp = processExpression(temp) + temp;
 	return temp;
     }
 
 
     public String processExpression(String str) {
-	System.out.println("Process Expression");	
 	//Assert that string is a valid expression
 
 	//While the substring is not smaller than a single expression, evaluate the expression
-	while(str.length() > 1) {
-	    System.out.println("In while loop");	
-	    String potato = null;
+	while(str.length() > 2) {
 	    
+	    String potato = null;
+
 	    char[] tempChar = new String(str.substring(2, str.length() - 1)).toCharArray();
 
 	    switch(str.charAt(1)) {
@@ -125,15 +73,12 @@ public class Calculator {
 	        Integer multiply = Character.getNumericValue(str.charAt(0)) *
 		    Character.getNumericValue(str.charAt(2));
 		potato = multiply.toString() + new String(tempChar);
-		break;
 	    case '/':
 		Integer divide = Character.getNumericValue(str.charAt(0)) /
 		    Character.getNumericValue(str.charAt(2));
 		potato = divide.toString() + new String(tempChar);
-		break;
 	default:
 	    System.out.println("Invalid Expression");
-	    System.exit(1);
 	    }
 	    if(potato != null && potato.length() > 2) {
 		System.out.println(potato);
@@ -146,65 +91,3 @@ public class Calculator {
     }
 }
    
-=======
-    public void processInput(String str) {
-	char[] charArray = str.toCharArray();
-
-	Object previousElement;
-	Object currentElement;
-
-	for(int i = 0; i < str.length(); i++) {
-	    currentElement = str.toCharArray()[i];
-	    
-	    //Needs tweaking
-	    if(isOperand(str.toCharArray()[0])) {
-		currentElement = (Operand) str.toCharArray()[0];
-	    } else if (isOperator(str.toCharArray()[0])) {
-		currentElement = (Operator) str.toCharArray()[0];
-	    }
-
-	    if(currentElement instanceof Operand && previousElement instanceof Operand) {
-		System.out.println("Invalid syntax, operand followed by operand");
-		System.exit(0);
-	    } else if(currentElement instanceof Operator && previousElement instanceof Operator) {
-		System.out.println("Invalid syntax, operator followed by operator");
-		System.exit(0);
-	    }
-
-	}	
-    }
-
-    public boolean isOperand(char character) {
-	if ((Operand) character instanceof Operand) {
-	    return true;
-	}
-
-	return false;
-    }
-
-    // public boolean isOperator(char character) {
-
-    // }
-
-    // public boolean isWhiteSpace(char character) {
-    
-    // }public float add(int one, int two) {
-	return one + two;
-    }
-
-    public float subtract(int one, int two) {
-	return one - two;
-    }
-
-    public float multply(int one, int two) {
-	return one * two;
-    }
-
-    public float divide(int one, int two) {
-	return one / two;
-    }
-
-
-
-}
->>>>>>> parent of f9fb7e7... Bullshit
