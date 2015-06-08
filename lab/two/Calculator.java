@@ -1,7 +1,5 @@
 package lab.two;
 
-import youtube_calculator.Stack;
-
 public class Calculator {
 	
     private char[] operators = {'+', '-', '*', '/', '(', ')'};
@@ -108,16 +106,12 @@ public class Calculator {
     	
 	while(operandStack.getCurrentSize() > 1) {
 		System.out.println("processing operand stack:" + operandStack.peek());
-	    int temp = Character.getNumericValue(operandStack.pop());
+	    int temp = operandStack.pop();
 	    char temp2 = operatorStack.pop();
-	    int temp3 = Character.getNumericValue(operandStack.pop());
+	    int temp3 = operandStack.pop();
 	    
 	    switch(temp2) {
-	    case '+':
-	    	
-	    	System.out.println("checking temp:" + temp);
-	    	System.out.println("checking temp3:" + temp3);
-	    	
+	    case '+':  	
 		operandStack.push(temp+temp3);
 		System.out.println(operandStack.peek());
 		break;
@@ -135,7 +129,7 @@ public class Calculator {
 	    }   
 	}
 		System.out.println("Operand stack or solution is:" + operandStack.peek());
-		return operatorStack.peek();
+		return operandStack.peek();
     }
 
     public boolean isOperand(char character) {

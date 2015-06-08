@@ -157,6 +157,18 @@ public class calculator_ui implements ActionListener {
 			
 			text.append("+");
 		}
+		if (element==buttondiv){
+			
+			text.append("/");
+		}
+		if (element==buttonsub){
+			
+			text.append("-");
+		}
+		if (element==buttonmulti){
+			
+			text.append("*");
+		}
 		if (element==buttoneq){
 				
 			elementString = text.getText();
