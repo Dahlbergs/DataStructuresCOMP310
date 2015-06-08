@@ -1,4 +1,6 @@
+<<<<<<< HEAD
 package lab.two;
+
 
 public class Stack<T> implements IStack<T> {
 
