@@ -169,13 +169,25 @@ public class calculator_ui implements ActionListener {
 			
 			text.append("*");
 		}
+		if (element==button_lbrac){
+			
+			text.append("(");
+		}
+		if (element==button_rbrac){
+			
+			text.append(")");
+		}
+		if (element==button_C){
+			
+			text.setText("");
+		}
 		if (element==buttoneq){
 				
 			elementString = text.getText();
 			System.out.println("text is:" + elementString);
-			calc.addInput(elementString);
+			//calc.addInput(elementString);
 			
-			print_solution(calc.processStacks());			
+			print_solution(calc.parseInput(elementString));			
 			
 		}
 	}
@@ -183,7 +195,9 @@ public class calculator_ui implements ActionListener {
 		public void print_solution(int aValue){
 			
 			text.setText("");
-			text.setText(Integer.toString(aValue));
-				
+			if (aValue == Integer.MAX_VALUE)
+				text.setText("UNDEF");
+			else
+				text.setText(Integer.toString(aValue));			
 	}
 }

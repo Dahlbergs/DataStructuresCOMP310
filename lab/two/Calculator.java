@@ -55,7 +55,9 @@ public class Calculator {
                 }
             else if (input[i] == ')'){ // if close bracket has higher value precedence than the operator already in stack AND also if it's not an open bracket then evaluate.
                 while (!operatorStack.isEmpty() &&  prec(operatorStack.peek()) >= prec(input[i]) && input[i] == ')' && operatorStack.peek() != '('){              
-                    processStacks();
+                    if (!processStacks()){
+                    	return Integer.MAX_VALUE;   	
+                    }
                     if (!operatorStack.isEmpty())
                         operatorStack.pop(); // if operator stack is not empty, remove operator just used.
                 }
@@ -66,7 +68,9 @@ public class Calculator {
             else if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/'){
             	
                 while (!operatorStack.isEmpty() &&prec(operatorStack.peek()) >= prec(input[i])){   
-                    processStacks();
+                	if (!processStacks()){
+                    	return Integer.MAX_VALUE;   	
+                    }
                 }
                 
                 operatorStack.push(input[i]);
@@ -76,7 +80,9 @@ public class Calculator {
     	}
     	
     	while (!operatorStack.isEmpty())
-    		processStacks();
+    		if (!processStacks()){
+            	return Integer.MAX_VALUE;   	
+            }
     	
     	return operandStack.pop();
     }
@@ -159,33 +165,38 @@ public class Calculator {
 //    }
     
 
-    public void processStacks() {
+    public boolean processStacks() {
     	
 		System.out.println("processing operand stack:" + operandStack.peek());
 	    int temp = operandStack.pop();
 	    char temp2 = operatorStack.pop();
 	    int temp3 = operandStack.pop();
 	    
+	    if (temp == 0){
+	    	return false;
+	    }
+	    
 	    switch(temp2) {
 	    case '+':  	
-		operandStack.push(temp+temp3);
+		operandStack.push(temp3+temp);
 		System.out.println(operandStack.peek());
 		break;
 	    case '-':
-		operandStack.push(temp-temp3);
+		operandStack.push(temp3-temp);
 		break;
 	    case '*':
-		operandStack.push(temp*temp3);
+		operandStack.push(temp3*temp);
 		break;
 	    case '/':
-	    	if (temp3 == 0) throw new UnsupportedOperationException ("Cannot divide by zer");
-		operandStack.push(temp/temp3);
+	
+		operandStack.push(temp3/temp);
 		break;
 	    default:
 		System.out.println("Invalid Operator");
 	    }   
 	
 		System.out.println("Operand stack or solution is:" + operandStack.peek());
+		return true;
 		//return operandStack.peek();
     }
 
