@@ -84,11 +84,7 @@ public class Calculator {
 	    int temp = operandStack.pop();
 	    char temp2 = operatorStack.pop();
 	    int temp3 = operandStack.pop();
-	    
-	    if (temp == 0){
-	    	return false;
-	    }
-	    
+	   
 	    switch(temp2) {
 
 	    case '+':  	
@@ -102,6 +98,10 @@ public class Calculator {
 		operandStack.push(temp3*temp);
 		break;
 	    case '/':
+	    	 if (temp == 0){
+	 	    	return false;
+	 	    }
+	 	    
 		operandStack.push(temp3/temp);
 		break;
 	    default:
