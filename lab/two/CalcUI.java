@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 
 //Would be easier with arrays in general.
 public class CalcUI implements ActionListener {
+
+    Calculator calc = new Calculator();
 	
 	JFrame frame = new JFrame("ICalculator");
 	JPanel panel = new JPanel(new FlowLayout());
@@ -47,8 +49,7 @@ public class CalcUI implements ActionListener {
 	 */
 	public void initialize() {
 		
-		frame.setVisible(true);
-		frame.setSize(230,230);
+		frame.setSize(230, 230);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -102,74 +103,103 @@ public class CalcUI implements ActionListener {
 		button_C.addActionListener(this);
 		button_Q.addActionListener(this);
 		button_less_than.addActionListener(this);
-								
+		
+		frame.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		String elementString;
-		//int value_solution = 0;
-		Object element = e.getSource();
-		Calculator calc = new Calculator();
+	    //String elementString;
+	    int value_solution = 0;
+	    Object element = e.getSource();
+	    //	Calculator calc = new Calculator();
 		
-		if (element==button1){
-			
+		if (element==button1){			
+			calc.addInput("1");
 			text.append("1");
 		}
-		if (element==button2){
-			
+		else if (element==button2){			
+			calc.addInput("2");
 			text.append("2");
 		}
-		if (element==button3){
-	
+		else if (element==button3){
+			calc.addInput("3");
 			text.append("3");
 		}
-		if (element==button4){
-	
+		else if (element==button4){	
+			calc.addInput("4");
 			text.append("4");
 		}
-		if (element==button5){
-	
+		else if (element==button5){
+			calc.addInput("5");
 			text.append("5");
 		}
-		if (element==button6){
-	
+		else if (element==button6){
+			calc.addInput("6");
 			text.append("6");
 		}
-		if (element==button7){
-	
+		else if (element==button7){	
+			calc.addInput("7");
 			text.append("7");
 		}
-		if (element==button8){
-	
+		else if (element==button8){	
+			calc.addInput("8");
 			text.append("8");
 		}
-		if (element==button9){
-	
+		else if (element==button9){	
+			calc.addInput("9");
 			text.append("9");
 		}
-		if (element==button0){
-			
+		else if (element==button0){			
+			calc.addInput("0");
 			text.append("0");
 		}
-		if (element==buttonadd){
-			
-			text.append("+");
+		else if (element==buttonadd){			
+		        calc.addInput("+");
+		        text.append("+");
+		} else if (element==buttonsub){			
+			calc.addInput("-");
+			text.append("-");
+		} else if (element==buttonmulti){			
+			calc.addInput("*");
+			text.append("*");
+		} else if (element==buttondiv){			
+		    calc.addInput("/");
+		    text.append("/");
+		} else if (element==button_lbrac){			
+		    calc.addInput("(");
+		    text.append("(");
+		} else if (element==button_rbrac){			
+		    calc.addInput(")");
+		    text.append(")");
+		} else if (element==button_C){			
+		    calc.clearInputStack();		    
+		    text.setText("");
+		} else if (element==button_less_than){			
+		    if(calc.popFromInputStack()) {
+			String temp = "";
+			String txt = text.getText();
+			if(txt.length() >= 1) {
+			temp = txt.substring(0, txt.length() - 1);
+			text.setText(temp);
+			}			
+		    }	     
+		    
 		}
-		if (element==buttoneq){
-				
-			elementString = text.getText();
-			System.out.println("text is:" + elementString);
-			calc.addInput(elementString);
-			
-			print_solution(calc.processStacks());			
-			
+		else if (element==buttoneq){
+		    //calc.parseInput();
+		    //elementString = text.getText();
+		    //System.out.println("text is:" + elementString);
+		    //calc.addInput(elementString);
+		    //print_solution(calc.processStacks());
+		    calc.convertToPostfix();
+		    int temp = calc.evaluatePostfix();
+		    text.setText(temp);
 		}
 	}
 		
 		public void print_solution(int aValue){
-			
 			text.setText("");
 			text.setText(Integer.toString(aValue));
 				

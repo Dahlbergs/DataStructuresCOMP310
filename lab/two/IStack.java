@@ -21,6 +21,8 @@ public interface IStack<T> {
 	@return True if empty, else false.*/
 
     public T top();
+
+    public void clear();
     
     public boolean isEmpty();
 }
