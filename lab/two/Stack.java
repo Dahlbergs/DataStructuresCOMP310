@@ -77,5 +77,7 @@ public class Stack<T> implements IStack<T> {
     public T top() {
 	return head.getData();
     }
+    
+
 }
 

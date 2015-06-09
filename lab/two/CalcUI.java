@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-//Would be easier with arrays in general.
+//CalcUI would be cleaner with arrays.
 public class CalcUI implements ActionListener {
 	
 	JFrame frame = new JFrame("ICalculator");
@@ -41,10 +41,9 @@ public class CalcUI implements ActionListener {
 	
 	JButton button_C = new JButton("C");
 	JButton button_Q = new JButton("Q");
-	JButton button_less_than = new JButton("<"); 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	JButton button_del = new JButton("<"); 
+	
+	
 	public void initialize() {
 		
 		frame.setVisible(true);
@@ -56,7 +55,7 @@ public class CalcUI implements ActionListener {
 		
 		panel.add(text);
 		panel.add(button_C);
-		panel.add(button_less_than);
+		panel.add(button_del);
 		panel.add(button_Q);
 		panel.add(buttondiv);
 		
@@ -101,7 +100,7 @@ public class CalcUI implements ActionListener {
 		buttoneq.addActionListener(this);
 		button_C.addActionListener(this);
 		button_Q.addActionListener(this);
-		button_less_than.addActionListener(this);
+		button_del.addActionListener(this);
 								
 	}
 
@@ -109,7 +108,6 @@ public class CalcUI implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		String elementString;
-		//int value_solution = 0;
 		Object element = e.getSource();
 		Calculator calc = new Calculator();
 		
@@ -181,22 +179,30 @@ public class CalcUI implements ActionListener {
 			
 			text.setText("");
 		}
+		if (element==button_Q){
+			
+			text.setText("");
+			System.exit(0);
+		}
+		if (element==button_del){
+			
+			String temp = text.getText();
+			String temp2 = temp.subString(0, temp.length()-1);
+			text.setText(temp2);
+		}
 		if (element==buttoneq){
 				
-			elementString = text.getText();
-			System.out.println("text is:" + elementString);
-			//calc.addInput(elementString);
-			
-			print_solution(calc.parseInput(elementString));			
+			elementString = text.getText(); // store inputs into string
+			print_solution(calc.parseInput(elementString));	// call parseInput to evaluate stored string and print to calculator text area		
 			
 		}
 	}
-		
+		// print solution accepts integer of ealuated expression and sets calculator text area
 		public void print_solution(int aValue){
 			
 			text.setText("");
 			if (aValue == Integer.MAX_VALUE)
-				text.setText("UNDEF");
+				text.setText("UNDEF"); // undefined expressions will result in UNDEF e.g "0"
 			else
 				text.setText(Integer.toString(aValue));			
 	}
