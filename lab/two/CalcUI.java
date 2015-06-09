@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 
 
 //Would be easier with arrays in general.
-public class calculator_ui implements ActionListener {
+public class CalcUI implements ActionListener {
 	
 	JFrame frame = new JFrame("ICalculator");
 	JPanel panel = new JPanel(new FlowLayout());

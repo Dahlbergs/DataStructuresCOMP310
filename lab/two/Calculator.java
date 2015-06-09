@@ -14,19 +14,7 @@ public class Calculator {
 
     }
 
-    public void addInput(String expression) {
-    
-    int len = expression.length();
-    char[] input = expression.toCharArray();
-   
-    	for (int i = 0; i < len; i++){
-    		 
-    		inputStack.push(input[i]);
-    		System.out.println("input stack:" + inputStack.peek());
-    	}
-    
-    	//parseInput();
-    }
+ 
    
   //A method to determine operator precedence.
     public static int prec(char op){
@@ -40,9 +28,7 @@ public class Calculator {
         else
         	temp = 1;
         return temp;
-    }
   
-    
     public int parseInput(String expression) {
     	
     	int len = expression.length();
@@ -169,6 +155,7 @@ public class Calculator {
     	
 		System.out.println("processing operand stack:" + operandStack.peek());
 	    int temp = operandStack.pop();
+
 	    char temp2 = operatorStack.pop();
 	    int temp3 = operandStack.pop();
 	    
@@ -177,6 +164,7 @@ public class Calculator {
 	    }
 	    
 	    switch(temp2) {
+
 	    case '+':  	
 		operandStack.push(temp3+temp);
 		System.out.println(operandStack.peek());
@@ -188,7 +176,6 @@ public class Calculator {
 		operandStack.push(temp3*temp);
 		break;
 	    case '/':
-	
 		operandStack.push(temp3/temp);
 		break;
 	    default:
@@ -197,7 +184,7 @@ public class Calculator {
 	
 		System.out.println("Operand stack or solution is:" + operandStack.peek());
 		return true;
-		//return operandStack.peek();
+
     }
 
     public boolean isOperand(char character) {
