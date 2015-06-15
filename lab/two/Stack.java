@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package lab.two;
 import java.util.*;
 
@@ -92,7 +91,6 @@ public class Stack<X> implements IStack<X> {
 <<<<<<< HEAD
 package lab.two;
 
-
 public class Stack<T> implements IStack<T> {
 
     /**The first node in the stack */
@@ -140,25 +138,25 @@ public class Stack<T> implements IStack<T> {
 	return numberOfNodes;
     }
     
-	public void push(T aValue) {
-	    Node newNode = new Node(aValue, head);
-	    newNode.next = head;
-	    head = newNode;
-	    numberOfNodes++;
-	}
+    public void push(T aValue) {
+	Node newNode = new Node(aValue, head);
+	newNode.next = head;
+	head = newNode;
+	numberOfNodes++;
+    }
     
-	public T pop() {
-	    if(!this.isEmpty()) {
+    public T pop() {
+	if(!this.isEmpty()) {
 	    Node temp = head; 
 	    head = head.next;
 	    numberOfNodes--;
 	    return temp.getData();
-	    } else {
-		System.out.println("invalid pop");
-		return null;
-	    }
+	} else {
+	    System.out.println("Stack is empty");
+	    return null;
 	}
-	
+    }
+    
     public boolean isEmpty() {
 	if (getCurrentSize() > 0) {
 	    return false;
@@ -166,9 +164,15 @@ public class Stack<T> implements IStack<T> {
 	    return true;
 	}
     }
-
+    
     public T top() {
 	return head.getData();
+    }
+    
+    public void clear() {
+	this.head = null;
+	numberOfNodes = 0;
+	
     }
 }
 

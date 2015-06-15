@@ -42,6 +42,11 @@ public interface IStack<T> {
 	
     /** Indicate whether the stack is empty or not
 	@return True if empty, else false.*/
+
+    public T top();
+
+    public void clear();
+    
     public boolean isEmpty();
 >>>>>>> 9804771ee2bbc9fd7f703a83cae08238192e2d1f
 }
