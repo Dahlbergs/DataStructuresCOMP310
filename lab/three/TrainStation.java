@@ -79,6 +79,8 @@ public class TrainStation {
 	String stationName =(DEFAULT_STATION_LIST[randStation]);
 	TrainStation destStation = new TrainStation(stationName);
 	Passenger temp = new Passenger(passengerName, destStation);
+
+	temp.printContents();
 	passengers.enqueue(temp);
     }
 
@@ -96,6 +98,10 @@ public class TrainStation {
     }
 
     public static void main(String args[]) {
+	TrainStation station = new TrainStation();
+	for(int i = 0; i <= 5; i++) {
+	station.generatePassenger();
+	}
 	
     }
 }
