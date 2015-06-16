@@ -17,29 +17,60 @@ public class TrainRoute {
 						  "Jacksonville Station"};
 
     private ArrayList<TrainStation> trainStations;
-    private TrainStation firstStation;
-    private TrainStation lastStation;
+
+    private int firstStation;
+    private int currentStation;
+    private int lastStation;
+
+    private enum Direction {
+	FORWARD,
+	REARWARD
+    }
+
+    private Direction dir = Direction.FORWARD;
+
+    private Train train;
 
     public TrainRoute() {
-	trainStations = new ArrayList<TrainStation>(DEFAULT_STATION_LIST.length);
-	
-	firstStation = new TrainStation(DEFAULT_STATION_LIST[0]);
-        lastStation = new TrainStation(DEFAULT_STATION_LIST[DEFAULT_STATION_LIST.length - 1]);
+	train = new Train();
+	trainStations = new ArrayList<TrainStation>(DEFAULT_STATION_LIST.length);	
 
 	for(int i = 0; i < DEFAULT_STATION_LIST.length; i++) {
 	    trainStations.add(new TrainStation(DEFAULT_STATION_LIST[i]));
 	} 
+
+	firstStation = 0;
+	currentStation = firstStation;
+	lastStation = trainStations.size();
     }
 
     public TrainRoute(String[] stations) {
+	train = new Train();
 	trainStations = new ArrayList<TrainStation>(stations.length);
-
-	firstStation = new TrainStation(stations[0]);
-        lastStation = new TrainStation(stations[stations.length - 1]);
 
 	for(int i = 0; i < stations.length; i++) {
 	    trainStations.add(new TrainStation(stations[i]));
 	}
+
+	firstStation = 0;
+	lastStation = trainStations.size();
+    }
+
+    public void moveNextStation() {
+	if(dir == Direction.FORWARD) {
+	    if(currentStation == lastStation) {
+		dir = Direction.REARWARD;
+		currentStation = lastStation - 1;
+		train.setCurrentStation(trainStations.get(currentStation));
+		
+		train.offloadPassengers();
+		train.boardPassengers();
+	    }
+	}
+    }
+
+    public void simulate() {
+	
     }
 
     public void printContents() {
