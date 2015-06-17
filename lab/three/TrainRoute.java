@@ -119,7 +119,10 @@ public class TrainRoute {
     
 
     public void simulate() {
-	
+	for(int i = 0; i < this.numOfStations; i++) {
+	    this.moveNextStation();
+	}
+
     }
 
     public void printContents() {
@@ -130,8 +133,6 @@ public class TrainRoute {
 
     public static void main(String args[]) {
 	TrainRoute route = new TrainRoute();
-
-	
 
 	for(int i = 0; i < route.numOfStations; i++) {
 	    route.moveNextStation();
