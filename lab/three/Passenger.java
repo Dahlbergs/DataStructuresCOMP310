@@ -43,10 +43,12 @@ public class Passenger implements Comparable<TrainStation> {
     public static void main(String args[]) {
 	TrainStation station = new TrainStation("StationOne");
 	TrainStation station1 = new TrainStation("StationTwo");
+	TrainStation station2 = new TrainStation("StationTwo");
 	Passenger pass = new Passenger("Jim", station1);
 
 	//Test compareTo function
 	System.out.println(pass.compareTo(station));
+	System.out.println(pass.compareTo(station2));
 	System.out.println(pass.compareTo(station1));
 
 	pass.printContents();

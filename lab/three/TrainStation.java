@@ -52,10 +52,12 @@ public class TrainStation {
     
     public TrainStation() {
 	this.stationName = "Default Station";
+	//this.generateRandomPassengers();
     }
 
     public TrainStation(String name) {
 	this.stationName = name;
+	//this.generateRandomPassengers();
     }
 
     public Passenger getPassengerFromStation() {
@@ -68,6 +70,14 @@ public class TrainStation {
 
     public boolean isStationEmpty() {
 	return passengers.isEmpty();
+    }
+
+    public void generateRandomPassengers() {
+	Random rand = new Random();
+	int numberOfWaitingPassengers = rand.nextInt(MAX_CAPACITY);
+	for(int i = 0; i <= numberOfWaitingPassengers; i++) {
+	    generatePassenger();
+	}
     }
     
     public void generatePassenger() {
@@ -98,10 +108,7 @@ public class TrainStation {
     }
 
     public static void main(String args[]) {
-	TrainStation station = new TrainStation();
-	for(int i = 0; i <= 5; i++) {
-	station.generatePassenger();
-	}
-	
+	TrainStation station = new TrainStation("Station");
+	station.generateRandomPassengers();
     }
 }
