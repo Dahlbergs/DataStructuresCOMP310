@@ -1,3 +1,8 @@
+/** Represents a train station with has a name, and a queue of passengers waiting to get on the train. 
+    Also contains functionality to randomly generate passengers 
+    @author Robert Blood, Sam Dahlberg, Yves Sabato
+*/
+
 package lab.three;
 
 import java.util.Random;
@@ -15,7 +20,7 @@ public class TrainStation {
 							  "Jacksonville Station"};
     
     private static final String[] PASSENGER_LIST = {"Jon O'Reilly",
-						    "Connor Marks",
+						    "Connor \"The Condor\" Marks",
 						    "Ancel Hernandez",
 						    "Robert Blood",
 						    "Alex Defrance",
@@ -24,6 +29,8 @@ public class TrainStation {
 						    "Sam Dahlberg",
 						    "Kevin Reynolds",
 						    "Nicole Nelson",
+						    "Maximilian Vilot",
+						    "Conor McGregor",
 						    "Danny Levin",
 						    "Erika Thornes",
 						    "Jon Smith",
@@ -43,23 +50,39 @@ public class TrainStation {
 						    "Meghan Stevens",
 						    "Jamie Porter",
 						    "Jesse James",
-						    "Tucker Thompson" };
+						    "Tucker Thompson",
+						    "Dustin Poirier",
+						    "Randy Couture",
+						    "Bruce Buffer",
+						    "Jose Aldo",
+						    "Gabriel Gonzaga",
+						    "Penis McPenis Penis",
+						    "Chuck Norris",
+						    "Chuck Liddell",
+						    "Slam Pig",
+						    "Dennis Siver",
+						    "Lyoto Machida",
+						    "Forrest Griffin"
+    };
     
     private static final int MAX_CAPACITY = 10;    
 
     private String stationName;
     private ArrayQueue<Passenger> passengers = new ArrayQueue<Passenger>();
-    
+
+    /** Default constructor */
     public TrainStation() {
 	this.stationName = "Default Station";
 	//this.generateRandomPassengers();
     }
 
+    /** Constructor assigns name to the train station. */
     public TrainStation(String name) {
 	this.stationName = name;
 	//this.generateRandomPassengers();
     }
 
+    /** Boards a passenger from this train station and adds it onto the train. */
     public Passenger getPassengerFromStation() {
 	if(!passengers.isEmpty()) {
 	    return passengers.dequeue();
@@ -68,10 +91,13 @@ public class TrainStation {
 	return null;
     }
 
+    /** @return If the station is empty, true, else false. */
     public boolean isStationEmpty() {
 	return passengers.isEmpty();
     }
 
+    /** Generates a random number of passengers with random names and destinations
+	station using the default list of names and stations */
     public void generateRandomPassengers() {
 	Random rand = new Random();
 	int numberOfWaitingPassengers = rand.nextInt(MAX_CAPACITY);
@@ -80,7 +106,7 @@ public class TrainStation {
 	}
     }
     
-    public void generatePassenger() {
+    private void generatePassenger() {
 	Random rand = new Random();
 	int randPassenger = rand.nextInt(PASSENGER_LIST.length);
 	String passengerName = (PASSENGER_LIST[randPassenger]);
@@ -94,19 +120,17 @@ public class TrainStation {
 	passengers.enqueue(temp);
     }
 
-    // public String generateStation(){
-    //     int iGen1 = new Random().nextInt(DEFAULT_STATION_LIST.length);
-    //     String randomDestination = (DEFAULT_STATION_LIST[iGen1]);
-    // }
-
+    /** @return The name of the station*/
     public String getStationName() {
 	   return this.stationName;
     }
 
+    /**@param name The name to apply to the station */
     public void setStationName(String name) {
 	   this.stationName = name;
     }
 
+    /** Test method */
     public static void main(String args[]) {
 	TrainStation station = new TrainStation("Station");
 	station.generateRandomPassengers();

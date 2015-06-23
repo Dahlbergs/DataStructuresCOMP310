@@ -1,10 +1,9 @@
-package lab.three;
-
-/** 
-    Represents a queue that depends on a circular array as the data storage
+/** Represents a queue that depends on a circular array as the data storage
     mechanism.
     @author Robert Blood, Sam Dahlberg, Yves Sabato
 */
+
+package lab.three;
 
 public class ArrayQueue<T> implements IQueue<T> {
 
