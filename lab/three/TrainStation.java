@@ -56,10 +56,8 @@ public class TrainStation {
 						    "Bruce Buffer",
 						    "Jose Aldo",
 						    "Gabriel Gonzaga",
-						    "Penis McPenis Penis",
 						    "Chuck Norris",
 						    "Chuck Liddell",
-						    "Slam Pig",
 						    "Dennis Siver",
 						    "Lyoto Machida",
 						    "Forrest Griffin"

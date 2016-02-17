@@ -25,10 +25,11 @@ class Train {
 	@return If successful, return true, else return false. */
     public boolean boardPassengers() {	
 	while(!currentStation.isStationEmpty()) {	    
-	    System.out.println("Boarding Passenger");
+	    
 	    passengers.enqueue(currentStation.getPassengerFromStation());
-	    System.out.println(passengers.back().getName());
+	    System.out.println("Boarding Passenger: " + passengers.back().getName());
 	}
+	System.out.println("\nDone boarding \n");
 	return true;
     }
 

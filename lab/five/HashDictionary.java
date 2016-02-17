@@ -1,0 +1,248 @@
+package lab.five;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class HashDictionary<K, V> {
+
+    private TableEntry[] hashTable;
+    private KeyIterator keyIterator;
+    
+    private int numberOfEntries;
+    private int locationsUsed;
+
+    private static final int DEFAULT_SIZE = 101;
+    private static final double MAX_LOAD_FACTOR = 0.5;
+
+    public HashDictionary() {
+    	this(DEFAULT_SIZE);
+    }
+
+    public HashDictionary(int tableSize) {
+	int primeSize = getNextPrime(tableSize);
+
+	this.hashTable = new TableEntry[primeSize];
+	numberOfEntries = 0;
+	locationsUsed = 0;
+    }
+
+    public V add(K key, V value) {
+	V oldValue;
+
+	if(isTooFull()) {
+	    rehash();
+	}
+	
+	int index = getHashIndex(key);
+	index = probe(index, key);
+
+	assert((index >= 0) && (index < hashTable.length));
+
+	if((hashTable[index] == null) || hashTable[index].isRemoved()) {
+	    hashTable[index] = new TableEntry(key, value);
+	    numberOfEntries++;
+	    locationsUsed++;
+	    oldValue = null;
+	} else {
+	    oldValue = hashTable[index].getValue();
+	    hashTable[index].setValue(value);
+	}
+
+	return oldValue;
+    }
+
+    private int getHashIndex(K key) {
+	int hashIndex = key.hashCode() % hashTable.length;
+	if(hashIndex < 0)
+	    hashIndex = hashIndex + hashTable.length;
+
+	return hashIndex;
+    }
+
+    private boolean isTooFull() {
+	return((locationsUsed/hashTable.length) > MAX_LOAD_FACTOR);
+    }
+
+    private void rehash() {
+	TableEntry[] oldTable = hashTable;
+	int oldSize = hashTable.length;
+	int newSize = getNextPrime(oldSize + oldSize);
+	
+	hashTable = new TableEntry[newSize];
+
+	numberOfEntries = 0;
+	locationsUsed = 0;
+
+	for(int index = 0; index < oldSize; index++) {
+	    if((oldTable[index] != null) && oldTable[index].isIn()) {
+		add(oldTable[index].getKey(), oldTable[index].getValue());
+	    } 
+	}
+    }
+
+    private int getNextPrime(int anInteger) {
+	int temp = anInteger + 1;
+
+	while(!isPrime(temp)) {
+	    temp++;
+	}
+
+	return temp;
+	
+    }
+
+    private boolean isPrime(int anInteger) {
+	if (anInteger == 2) { return true; }
+	if (anInteger % 2 == 0) { return false; }
+	for (int i = 3; i * i < anInteger; i += 2) {
+	    if (anInteger % i == 0) { return false; }
+	}
+	return true;
+    }
+    
+
+    private int probe(int index, K key) {
+	boolean found = false;
+	int removedStateIndex = -1;
+
+	while(!found && (hashTable[index] != null)) {
+	    if(hashTable[index].isIn()) {
+		if(key.equals(hashTable[index].getKey())) {
+		    found = true;
+		} else {
+		    index = (index + 1) % hashTable.length;
+		}
+	    } else {
+		if(removedStateIndex == -1) {
+		    removedStateIndex = index;
+		}
+		
+		index = (index + 1) % hashTable.length;
+	    }
+	}
+
+	if(found || (removedStateIndex == -1)) {
+	    return index;
+	} else {
+	    return removedStateIndex;
+	}
+    }
+
+    private int locateIndex(K key) {
+	int index = 0;
+	while((index < numberOfEntries) &&
+	      !key.equals(hashTable[index].getKey())) {
+	    index++;
+	}
+	return index;
+    }
+
+    public V getValueFromKey(K key) {
+	V result = null;
+	
+	int index = getHashIndex(key);
+	index = locate(index, key);
+
+	if(index != -1)
+	    result = hashTable[index].getValue();
+	
+	return result;
+    }
+
+    public V remove(K key) {
+	V removedValue = null;
+
+	int index = getHashIndex(key);
+	index = locate(index, key);
+
+	if(index != -1) {
+	    removedValue = hashTable[index].getValue();
+	    hashTable[index].setToRemoved();
+	    numberOfEntries--;
+	}
+	return removedValue;
+    }
+
+    public Iterator<K> getKeyIterator() { return keyIterator; }
+
+    private int locate(int index, K key) {
+	boolean found = false;
+
+	while( !found && (hashTable[index] != null)) {
+	    if(hashTable[index].isIn() &&
+	       key.equals(hashTable[index].getKey())) {
+		found = true;
+	    } else {
+		index = (index + 1) % hashTable.length;
+	    }
+
+	    int result = -1;
+	    if(found) {
+		result = index;
+	    }
+	    return result;
+	}
+    }
+
+    private static class TableEntry<K, V> {
+	private K key;
+	private V value;
+
+	boolean inTable;
+
+	private TableEntry(K searchKey, V dataValue) {
+	    key = searchKey;
+	    value = dataValue;
+	    inTable = true;
+	}
+
+	private K getKey()    { return key; }
+	private V getValue()  { return value; }
+
+	private void setValue(V newValue) { value = newValue; }	
+	private boolean isIn() { return inTable; }
+	private boolean  isRemoved() { return !inTable; }
+	private void setToIn() { inTable = true; }
+	private void setToRemoved() { inTable = false; }
+
+    }
+
+  
+    
+    private class KeyIterator implements Iterator<K> {
+	private int currentIndex;
+	private int numberLeft;
+	
+	private KeyIterator() {
+	    currentIndex = 0;
+	    numberLeft = numberOfEntries;
+	}
+
+	public boolean hasNext() {
+	    return numberLeft > 0;
+	}
+
+	public K next() {
+	    K result = null;
+
+	    if(hasNext()) {
+		while((hashTable[currentIndex] == null) ||
+		       hashTable[currentIndex].isRemoved()) {
+		    currentIndex++;
+		}
+
+		result = hashTable[currentIndex].getKey();
+		numberLeft--;
+		currentIndex++;
+	    } else {
+		throw new NoSuchElementException();
+	    }
+
+	    return result;	    
+	}
+
+	public void remove() {
+	    throw new UnsupportedOperationException();
+	}
+    }
+}
